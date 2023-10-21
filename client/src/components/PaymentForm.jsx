@@ -47,10 +47,12 @@ export default function PaymentForm() {
         username: currentUser.displayName,
         items: cartItems,
       });
+      dispatch(cartActions.resetCart());
+      navigate("/paymentcompleted");
     } catch (error) {
       console.log("firebase error", error);
     }
-    dispatch(cartActions.resetCart());
+
     localStorage.setItem("items", "[]");
   };
 
@@ -72,7 +74,6 @@ export default function PaymentForm() {
         if (response.data.success) {
           console.log("Successful payment");
           setSuccess(true);
-          navigate("/paymentcompleted");
           addPurshaseToFirebase();
         }
       } catch (error) {

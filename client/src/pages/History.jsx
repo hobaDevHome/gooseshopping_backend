@@ -72,7 +72,7 @@ const PurchaseHistory = () => {
           <div className={classes.divider} />
         </div>
 
-        {list.length > 0 ? (
+        {list.length > 0 && (
           <>
             {list.map((purchase, index) => {
               return (
@@ -147,14 +147,6 @@ const PurchaseHistory = () => {
               );
             })}
           </>
-        ) : (
-          <div>
-            <Link to={`/`} style={{ textDecoration: "none" }}>
-              <Button variant="outlined" startIcon={<HomeOutlinedIcon />}>
-                Back to Home
-              </Button>
-            </Link>
-          </div>
         )}
       </Grid>
     </Paper>
