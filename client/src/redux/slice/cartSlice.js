@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const storedCartItems = JSON.parse(localStorage.getItem("items") || "[]");
 let storedTotalAmount = 0;
 let storedTotalQuantit = 0;
-if (storedCartItems) {
+if (storedCartItems.length > 0) {
   storedTotalAmount = storedCartItems.reduce(
     (total, item) => total + Number(item.price) * Number(item.quantity),
     0
@@ -14,12 +14,11 @@ if (storedCartItems) {
     0
   );
 }
-console.log("in slice", storedCartItems, storedTotalAmount, storedTotalQuantit);
 
 const initialState = {
   cartItems: storedCartItems ? storedCartItems : [],
   totalAmount: storedTotalAmount,
-  storedTotalQuantit: storedTotalQuantit,
+  totalQuantity: storedTotalQuantit,
 };
 
 const cartSlice = createSlice({

@@ -104,7 +104,6 @@ const Cart = () => {
   const totalAmount = useSelector((state) => state.cart.totalAmount);
 
   useEffect(() => {
-    console.log("items changed");
     localStorage.setItem("items", JSON.stringify(cartItems));
   }, [cartItems]);
 
@@ -346,7 +345,14 @@ const CartItemLargeScreens = ({ item }) => {
   };
 
   return (
-    <Grid key={item.id} container item xs={12} padding={1}>
+    <Grid
+      key={item.id}
+      container
+      item
+      xs={12}
+      padding={1}
+      alignItems={"center"}
+    >
       <Grid item xs={0.5}>
         <div onClick={deleteFromCart} className={classes.deleteButton}>
           X
@@ -424,6 +430,7 @@ const CartItemMobileScreens = ({ item }) => {
       sx={{ border: `1px solid #EBF0FF` }}
       borderRadius={4}
       margin={3}
+      alignItems={"center"}
     >
       <Grid item xs={3}>
         <img

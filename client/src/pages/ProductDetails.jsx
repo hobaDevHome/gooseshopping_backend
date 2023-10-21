@@ -212,7 +212,6 @@ const ProductDetails = ({ products }) => {
     }
   };
 
-  console.log("incart", currentItemInCart);
   return (
     <div>
       <Navbar
