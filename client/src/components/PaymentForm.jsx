@@ -1,20 +1,23 @@
 // @ts-nocheck
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { cartActions } from "../redux/slice/cartSlice";
 import { useSelector, useDispatch } from "react-redux";
 import useAuth from "../hooks/useAuth";
-import { doc, setDoc, collection, addDoc } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase-config";
+import { colors } from "../constants";
+import { makeStyles } from "@mui/styles";
+import "./Stripe.css";
 
 const CARD_OPTIONS = {
   iconStyle: "solid",
   style: {
     base: {
       "iconColor": "#04222c",
-      "color": "#e01111",
+      "color": "#070707",
       "fontWeight": 500,
       "fontFamily": "Roboto, Open Sans, Segoe UI, sans-serif",
       "fontSize": "16px",
@@ -28,9 +31,37 @@ const CARD_OPTIONS = {
     },
   },
 };
+const useStyles = makeStyles({
+  blueButton: {
+    color: colors.white,
+    height: "100%",
+    width: "70%",
+    padding: 10,
+
+    backgroundColor: colors.darkerBlue,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    fontSize: 20,
+    borderRadius: 3,
+    cursor: "pointer",
+    margin: "0 auto",
+    marginTop: 10,
+  },
+
+  searchInputContainer: {
+    display: "flex",
+    flexDirection: "row",
+    borderRadius: 3,
+    borderColor: colors.divider,
+    borderWidth: 2,
+    borderStyle: "solid",
+  },
+});
 
 export default function PaymentForm() {
-  const [success, setSuccess] = useState(false);
+  const classes = useStyles();
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
@@ -73,7 +104,7 @@ export default function PaymentForm() {
 
         if (response.data.success) {
           console.log("Successful payment");
-          setSuccess(true);
+
           addPurshaseToFirebase();
         }
       } catch (error) {
@@ -85,24 +116,15 @@ export default function PaymentForm() {
   };
 
   return (
-    <>
-      {!success ? (
-        <form onSubmit={handleSubmit}>
-          <fieldset className="FormGroup" style={{ color: "black" }}>
-            <div className="FormRow" style={{ color: "black" }}>
-              <CardElement options={CARD_OPTIONS} />
-            </div>
-          </fieldset>
-          <button>Pay</button>
-        </form>
-      ) : (
-        <div>
-          <h2>
-            You just bought a sweet spatula congrats this is the best decision
-            of you're life
-          </h2>
+    <form onSubmit={handleSubmit}>
+      <fieldset className="FormGroup">
+        <div className="FormRow">
+          <CardElement options={CARD_OPTIONS} />
         </div>
-      )}
-    </>
+      </fieldset>
+      <div className={classes.searchButtonContianer}>
+        <div className={classes.blueButton}>Search</div>
+      </div>
+    </form>
   );
 }
