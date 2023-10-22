@@ -2,17 +2,16 @@
   margin: 0 15px 20px;
   padding: 0;
   border-style: none;
-  background-color: #7795f8;
+  background-color: #ebeef8;
   will-change: opacity, transform;
+  border-radius: 5px;
 }
 
 .FormRow {
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-align: center;
   align-items: center;
   margin-left: 15px;
-  border-top: 1px solid #819efc;
+  border-radius: 5px;
 }
 
 .StripeElement--webkit-autofill {

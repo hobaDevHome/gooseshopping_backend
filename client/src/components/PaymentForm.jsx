@@ -13,7 +13,7 @@ import { makeStyles } from "@mui/styles";
 import { toast } from "react-toastify";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
-import Box from "@mui/material/Box";
+
 import Paper from "@mui/material/Paper";
 
 import Typography from "@mui/material/Typography";
@@ -23,14 +23,14 @@ const CARD_OPTIONS = {
   iconStyle: "solid",
   style: {
     base: {
-      iconColor: "#04222c",
+      iconColor: "#04475e",
       color: "#070707",
       fontWeight: 500,
       fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
       fontSize: "16px",
       fontSmoothing: "antialiased",
       ":-webkit-autofill": { color: "#fce883" },
-      "::placeholder": { color: "#87bbfd" },
+      "::placeholder": { color: "#81b2f1" },
     },
     invalid: {
       iconColor: "#ffc7ee",
@@ -44,6 +44,7 @@ const useStyles = makeStyles({
     height: "100%",
     width: "70%",
     padding: 10,
+    border: "none",
 
     backgroundColor: colors.darkerBlue,
     display: "flex",
