@@ -155,7 +155,9 @@ const Checkout = () => {
               item
               container
               xs={12}
-              padding={3}
+              paddingLeft={8}
+              paddingRight={8}
+              paddingTop={2}
               marginRight={1}
               marginTop={{ sx: 2, md: 0 }}
               sx={{ margin: "0 auto" }}
@@ -172,7 +174,6 @@ const Checkout = () => {
                     variant="h5"
                     display="block"
                     gutterBottom
-                    paddingBottom={{ sm: 1, md: 3 }}
                     sx={{ textAlign: "left" }}
                   >
                     TOTAL
@@ -181,7 +182,6 @@ const Checkout = () => {
                     variant="h5"
                     display="block"
                     gutterBottom
-                    paddingBottom={{ sm: 1, md: 3 }}
                     sx={{ textAlign: "left" }}
                   >
                     ${totalAmount - 20}

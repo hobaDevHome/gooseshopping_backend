@@ -11,6 +11,12 @@ import { db } from "../firebase-config";
 import { colors } from "../constants";
 import { makeStyles } from "@mui/styles";
 import { toast } from "react-toastify";
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
+
+import Typography from "@mui/material/Typography";
 import "./Stripe.css";
 
 const CARD_OPTIONS = {
@@ -58,6 +64,15 @@ const useStyles = makeStyles({
     borderColor: colors.divider,
     borderWidth: 2,
     borderStyle: "solid",
+  },
+  column: {
+    display: "flex",
+    flexDirection: "column",
+    margin: 0,
+    padding: 0,
+    paddingLeft: 10,
+    color: colors.white,
+    width: "80%",
   },
 });
 
@@ -125,21 +140,59 @@ export default function PaymentForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <fieldset className="FormGroup">
-        <div className="FormRow">
-          <CardElement options={CARD_OPTIONS} />
-        </div>
-      </fieldset>
-      <button
-        disabled={isProcessing || !stripe || !elements}
-        id="submit"
-        className={classes.blueButton}
-      >
-        <span id="button-text">
-          {isProcessing ? "Processing ... " : "Pay now"}
-        </span>
-      </button>
-    </form>
+    <Paper elevation={3} padding={0}>
+      <form onSubmit={handleSubmit}>
+        <Grid container padding={3} marginTop={3}>
+          <Grid item xs={12}>
+            <Typography
+              variant="caption"
+              display="block"
+              gutterBottom
+              sx={{ textAlign: "left" }}
+            >
+              Full name
+            </Typography>
+            <TextField
+              fullWidth
+              label="Fullname"
+              id="Fullname"
+              sx={{ marginBottom: 3 }}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Typography
+              variant="caption"
+              display="block"
+              gutterBottom
+              sx={{ textAlign: "left" }}
+            >
+              Email
+            </Typography>
+            <TextField
+              fullWidth
+              label="Email"
+              id="Email"
+              sx={{ marginBottom: 3 }}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <fieldset className="FormGroup">
+              <div className="FormRow">
+                <CardElement options={CARD_OPTIONS} />
+              </div>
+            </fieldset>
+          </Grid>
+          <button
+            disabled={isProcessing || !stripe || !elements}
+            id="submit"
+            className={classes.blueButton}
+          >
+            <span id="button-text">
+              {isProcessing ? "Processing ... " : "Pay now"}
+            </span>
+          </button>
+        </Grid>
+      </form>
+    </Paper>
   );
 }
