@@ -1,10 +1,11 @@
 .FormGroup {
-  margin: 0 15px 20px;
+  margin: 0 0px 20px;
   padding: 0;
   border-style: none;
   background-color: #ebeef8;
   will-change: opacity, transform;
   border-radius: 5px;
+  height: 50px;
 }
 
 .FormRow {

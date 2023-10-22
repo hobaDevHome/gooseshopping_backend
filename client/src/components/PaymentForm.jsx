@@ -140,6 +140,10 @@ export default function PaymentForm() {
     setIsProcessing(false);
   };
 
+  const clearForm = () => {
+    elements.getElement(CardElement).clear();
+  };
+
   return (
     <Paper elevation={3} padding={0}>
       <form onSubmit={handleSubmit}>
@@ -183,15 +187,29 @@ export default function PaymentForm() {
               </div>
             </fieldset>
           </Grid>
-          <button
-            disabled={isProcessing || !stripe || !elements}
-            id="submit"
-            className={classes.blueButton}
-          >
-            <span id="button-text">
-              {isProcessing ? "Processing ... " : "Pay now"}
-            </span>
-          </button>
+          <Grid item xs={6}>
+            <button
+              type="button"
+              onClick={clearForm}
+              disabled={isProcessing || !stripe || !elements}
+              className={classes.blueButton}
+              style={{ backgroundColor: colors.darkPink }}
+            >
+              Reset
+            </button>
+          </Grid>
+          <Grid item xs={6}>
+            <button
+              disabled={isProcessing || !stripe || !elements}
+              id="submit"
+              className={classes.blueButton}
+              style={{ backgroundColor: colors.green }}
+            >
+              <span id="button-text">
+                {isProcessing ? "Processing ... " : "Pay now"}
+              </span>
+            </button>
+          </Grid>
         </Grid>
       </form>
     </Paper>
