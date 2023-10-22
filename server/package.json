@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "div": "nodemon index.js",
+    "build": "npm install"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +16,7 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "nodemon": "^3.0.1",
     "stripe": "^8.131.1"
   }
 }
