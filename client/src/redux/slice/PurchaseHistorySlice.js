@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import { db } from "../../firebase-config";
 import { collection, getDocs } from "firebase/firestore";
 
@@ -22,7 +20,7 @@ const PurchaseHistorySlice = createSlice({
   name: "history",
   initialState: {
     historyList: [],
-    status: "idle", // 'idle' | 'loading' | 'succeeded' | 'failed'
+    status: "idle",
     error: null,
   },
   reducers: {},
@@ -44,7 +42,6 @@ const PurchaseHistorySlice = createSlice({
 
 export default PurchaseHistorySlice.reducer;
 
-// Selectors
 export const selectHistoryList = (state) => state.history.historyList;
 export const selectStatus = (state) => state.history.status;
 export const selectError = (state) => state.history.error;

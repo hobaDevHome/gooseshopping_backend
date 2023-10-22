@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import { db } from "../../firebase-config";
 import { collection, getDocs } from "firebase/firestore";
 
@@ -44,7 +42,6 @@ const productsSlice = createSlice({
 
 export default productsSlice.reducer;
 
-// Selectors
 export const selectProducts = (state) => state.products.products;
 export const selectStatus = (state) => state.products.status;
 export const selectError = (state) => state.products.error;

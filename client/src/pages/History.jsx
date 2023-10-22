@@ -1,4 +1,3 @@
-// @ts-nocheck
 import useAtuh from "../hooks/useAuth";
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -11,8 +10,6 @@ import Grid from "@mui/material/Grid";
 import { colors } from "../constants";
 import { makeStyles } from "@mui/styles";
 import { Link } from "react-router-dom";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import Button from "@mui/material/Button";
 import { Paper } from "@mui/material";
 
 const useStyles = makeStyles({

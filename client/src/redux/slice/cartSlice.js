@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { createSlice } from "@reduxjs/toolkit";
 
 const storedCartItems = JSON.parse(localStorage.getItem("items") || "[]");

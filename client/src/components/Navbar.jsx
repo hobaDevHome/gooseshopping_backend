@@ -1,4 +1,3 @@
-// @ts-nocheck
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { signOut } from "firebase/auth";
@@ -92,7 +91,6 @@ function ResponsiveAppBar({ active = "" }) {
   const handSingInOut = () => {
     if (currentUser) {
       signout();
-      // dispatch(cartActions.resetCart());
     } else {
       navigate("/singin");
     }

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
 import React, { useState } from "react";
@@ -23,12 +22,12 @@ const CARD_OPTIONS = {
   iconStyle: "solid",
   style: {
     base: {
-      iconColor: "#04475e",
-      color: "#070707",
-      fontWeight: 500,
-      fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
-      fontSize: "16px",
-      fontSmoothing: "antialiased",
+      "iconColor": "#04475e",
+      "color": "#070707",
+      "fontWeight": 500,
+      "fontFamily": "Roboto, Open Sans, Segoe UI, sans-serif",
+      "fontSize": "16px",
+      "fontSmoothing": "antialiased",
       ":-webkit-autofill": { color: "#fce883" },
       "::placeholder": { color: "#81b2f1" },
     },

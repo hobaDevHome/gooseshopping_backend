@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -175,7 +174,6 @@ const ProductDetails = ({ products }) => {
   const cartItems = useSelector((state) => state.cart.cartItems);
 
   useEffect(() => {
-    console.log("items changed");
     localStorage.setItem("items", JSON.stringify(cartItems));
   }, [cartItems]);
 

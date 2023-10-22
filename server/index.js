@@ -1,4 +1,3 @@
-// @ts-nocheck
 const express = require("express");
 const app = express();
 require("dotenv").config();
@@ -23,7 +22,7 @@ app.post("/payment", cors(), async (req, res) => {
 
       return_url: "http://localhost:3000/",
     });
-    console.log("Payment", payment);
+
     res.json({
       message: "Payment successful",
       success: true,

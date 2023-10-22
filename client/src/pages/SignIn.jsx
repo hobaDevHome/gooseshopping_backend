@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, { useState } from "react";
 
 import Grid from "@mui/material/Grid";
@@ -77,8 +76,6 @@ export function mapAuthCodeToMessage(authCode) {
 
     case "auth/wrong-password":
       return "Wrong password";
-
-    // Many more authCode mapping here...
 
     default:
       return "";
