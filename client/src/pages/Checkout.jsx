@@ -6,7 +6,6 @@ import Footer from "../components/Footer";
 import Grid from "@mui/material/Grid";
 
 import { colors } from "../constants";
-import { toast } from "react-toastify";
 
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
@@ -101,9 +100,6 @@ const Checkout = () => {
   const classes = useStyles();
   const cartItems = useSelector((state) => state.cart.cartItems);
   const totalAmount = useSelector((state) => state.cart.totalAmount);
-  const dispatch = useDispatch();
-
-  const [showItem, setShowItem] = useState(false);
 
   return (
     <div>
@@ -154,56 +150,47 @@ const Checkout = () => {
                 return <CartItemMobileScreens item={item} key={item.id} />;
               })}
             </Grid>
-            <Grid item container xs={12} marginTop={3}>
+
+            <Grid
+              item
+              container
+              xs={12}
+              padding={3}
+              marginRight={1}
+              marginTop={{ sx: 2, md: 0 }}
+              sx={{ margin: "0 auto" }}
+            >
               <Grid
-                item
                 container
+                item
                 xs={12}
-                sm={12}
-                md={6}
-                padding={1}
-                marginRight={1}
-                marginTop={{ sx: 2, md: 0 }}
-                sx={{ margin: "0 auto" }}
+                flexDirection={"column"}
+                alignItems={"end"}
               >
-                <Grid
-                  container
-                  item
-                  xs={12}
-                  flexDirection={"column"}
-                  alignItems={"end"}
-                >
-                  <div className={classes.checkoutRow}>
-                    <Typography
-                      variant="h5"
-                      display="block"
-                      gutterBottom
-                      paddingBottom={{ sm: 1, md: 3 }}
-                      sx={{ textAlign: "left" }}
-                    >
-                      TOTAL
-                    </Typography>
-                    <Typography
-                      variant="h5"
-                      display="block"
-                      gutterBottom
-                      paddingBottom={{ sm: 1, md: 3 }}
-                      sx={{ textAlign: "left" }}
-                    >
-                      ${totalAmount - 20}
-                    </Typography>
-                  </div>
-                </Grid>
-                <Grid
-                  container
-                  item
-                  xs={12}
-                  flexDirection={"column"}
-                  sx={{ border: "none" }}
-                >
-                  <StripeContainer />
-                </Grid>
+                <div className={classes.checkoutRow}>
+                  <Typography
+                    variant="h5"
+                    display="block"
+                    gutterBottom
+                    paddingBottom={{ sm: 1, md: 3 }}
+                    sx={{ textAlign: "left" }}
+                  >
+                    TOTAL
+                  </Typography>
+                  <Typography
+                    variant="h5"
+                    display="block"
+                    gutterBottom
+                    paddingBottom={{ sm: 1, md: 3 }}
+                    sx={{ textAlign: "left" }}
+                  >
+                    ${totalAmount - 20}
+                  </Typography>
+                </div>
               </Grid>
+            </Grid>
+            <Grid item xs={8} marginRight={1} sx={{ margin: "0 auto" }}>
+              <StripeContainer />
             </Grid>
           </Grid>
         </>

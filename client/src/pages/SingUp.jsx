@@ -2,18 +2,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import toast, { toastConfig } from "react-simple-toasts";
-import "react-simple-toasts/dist/theme/info.css"; // choose your theme
+import { toast } from "react-toastify";
+
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { setDoc, doc } from "@firebase/firestore";
-import {
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-  uploadBytes,
-} from "@firebase/storage";
+import { ref, uploadBytesResumable, getDownloadURL } from "@firebase/storage";
 import { auth, storage, db } from "../firebase-config";
 
 import { Link } from "react-router-dom";
@@ -23,6 +18,8 @@ import goose from "../images/goose-loog.jpg";
 
 import Logo from "../images/goos_logo.png";
 
+import { mapAuthCodeToMessage } from "./SignIn";
+
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import MailOutlinedIcon from "@mui/icons-material/MailOutlined";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -30,8 +27,6 @@ import InputAdornment from "@mui/material/InputAdornment";
 import CircularProgress from "@mui/material/CircularProgress";
 
 import { makeStyles } from "@mui/styles";
-
-toastConfig({ theme: "info" });
 
 const useStyles = makeStyles({
   image: {
@@ -133,9 +128,11 @@ const SignUp = () => {
           email,
         });
       }
+      toast.success("New account created");
       setLoadaing(false);
       navigate("/singin");
     } catch (error) {
+      toast.error(mapAuthCodeToMessage(error.code));
       console.log(error);
       setLoadaing(false);
     }
@@ -163,6 +160,9 @@ const SignUp = () => {
           <TextField
             fullWidth
             id="username"
+            onKeyDown={(event) => {
+              if (event.key === "Enter") singup(event);
+            }}
             sx={{ marginBottom: 3 }}
             placeholder="username"
             value={username}
@@ -179,6 +179,9 @@ const SignUp = () => {
           <TextField
             fullWidth
             id="email"
+            onKeyDown={(event) => {
+              if (event.key === "Enter") singup(event);
+            }}
             placeholder="emial"
             sx={{ marginBottom: 3 }}
             value={email}
@@ -195,6 +198,10 @@ const SignUp = () => {
             fullWidth
             id="password"
             placeholder="password"
+            onKeyDown={(event) => {
+              if (event.key === "Enter") singup(event);
+            }}
+            type="password"
             sx={{ marginBottom: 3 }}
             value={password}
             onChange={(e) => setPassword(e.target.value)}

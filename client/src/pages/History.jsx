@@ -50,6 +50,9 @@ const PurchaseHistory = () => {
     dispatch(fetchHistory());
   }, [dispatch]);
 
+  if (!currentUser) {
+    return;
+  }
   if (historyList.length > 0) {
     list = historyList.filter((e) => e.userid === currentUser.uid);
   }
@@ -63,14 +66,18 @@ const PurchaseHistory = () => {
       }}
     >
       <Grid container>
-        <Grid item xs={12}>
+        <Grid
+          item
+          xs={12}
+          sx={{
+            borderRadius: 2,
+            backgroundColor: colors.divider,
+          }}
+        >
           <Typography variant="h6" gutterBottom>
             Your previous orders
           </Typography>
         </Grid>
-        <div className={classes.checkoutRow}>
-          <div className={classes.divider} />
-        </div>
 
         {list.length > 0 && (
           <>

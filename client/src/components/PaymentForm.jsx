@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { cartActions } from "../redux/slice/cartSlice";
 import { useSelector, useDispatch } from "react-redux";
@@ -10,18 +10,19 @@ import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase-config";
 import { colors } from "../constants";
 import { makeStyles } from "@mui/styles";
+import { toast } from "react-toastify";
 import "./Stripe.css";
 
 const CARD_OPTIONS = {
   iconStyle: "solid",
   style: {
     base: {
-      "iconColor": "#04222c",
-      "color": "#070707",
-      "fontWeight": 500,
-      "fontFamily": "Roboto, Open Sans, Segoe UI, sans-serif",
-      "fontSize": "16px",
-      "fontSmoothing": "antialiased",
+      iconColor: "#04222c",
+      color: "#070707",
+      fontWeight: 500,
+      fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
+      fontSize: "16px",
+      fontSmoothing: "antialiased",
       ":-webkit-autofill": { color: "#fce883" },
       "::placeholder": { color: "#87bbfd" },
     },
@@ -61,6 +62,7 @@ const useStyles = makeStyles({
 });
 
 export default function PaymentForm() {
+  const [isProcessing, setIsProcessing] = useState(false);
   const classes = useStyles();
   const stripe = useStripe();
   const elements = useElements();
@@ -82,6 +84,7 @@ export default function PaymentForm() {
       navigate("/paymentcompleted");
     } catch (error) {
       console.log("firebase error", error);
+      toast.error(error.message);
     }
 
     localStorage.setItem("items", "[]");
@@ -89,6 +92,9 @@ export default function PaymentForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    setIsProcessing(true);
+
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: elements.getElement(CardElement),
@@ -109,10 +115,13 @@ export default function PaymentForm() {
         }
       } catch (error) {
         console.log("Error", error);
+        toast.error(error.message);
       }
     } else {
       console.log(error.message);
+      toast.error(error.message);
     }
+    setIsProcessing(false);
   };
 
   return (
@@ -122,9 +131,15 @@ export default function PaymentForm() {
           <CardElement options={CARD_OPTIONS} />
         </div>
       </fieldset>
-      <div className={classes.searchButtonContianer}>
-        <div className={classes.blueButton}>Search</div>
-      </div>
+      <button
+        disabled={isProcessing || !stripe || !elements}
+        id="submit"
+        className={classes.blueButton}
+      >
+        <span id="button-text">
+          {isProcessing ? "Processing ... " : "Pay now"}
+        </span>
+      </button>
     </form>
   );
 }

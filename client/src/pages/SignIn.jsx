@@ -20,6 +20,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Logo from "../images/goos_logo.png";
 
 import { makeStyles } from "@mui/styles";
+import { toast } from "react-toastify";
 
 const useStyles = makeStyles({
   image: {
@@ -54,6 +55,36 @@ const useStyles = makeStyles({
   },
 });
 
+export function mapAuthCodeToMessage(authCode) {
+  switch (authCode) {
+    case "auth/invalid-password":
+      return "Password provided is not corrected";
+
+    case "auth/invalid-email":
+      return "Email provided is invalid";
+
+    case "auth/email-already-exists":
+      return "Email already exists";
+
+    case "auth/user-not-found":
+      return "User not ound";
+
+    case "auth/email-already-in-use":
+      return "Email already exists";
+
+    case "auth/weak-password":
+      return "Password should be at least 6 characters";
+
+    case "auth/wrong-password":
+      return "Wrong password";
+
+    // Many more authCode mapping here...
+
+    default:
+      return "";
+  }
+}
+
 const SignIn = () => {
   const [email, setemail] = useState("");
   const [password, setPassword] = useState("");
@@ -74,7 +105,9 @@ const SignIn = () => {
 
       setLoadaing(false);
       navigate("/");
+      toast.success("Welcome back");
     } catch (error) {
+      toast.error(mapAuthCodeToMessage(error.code));
       console.log(error);
       setLoadaing(false);
     }
@@ -101,6 +134,9 @@ const SignIn = () => {
         <Grid item xs={12} justifyContent="center" alignItems="center">
           <TextField
             fullWidth
+            onKeyDown={(event) => {
+              if (event.key === "Enter") singin(event);
+            }}
             id="email"
             placeholder="emial"
             sx={{ marginBottom: 3 }}
@@ -117,6 +153,10 @@ const SignIn = () => {
           <TextField
             fullWidth
             id="password"
+            onKeyDown={(event) => {
+              if (event.key === "Enter") singin(event);
+            }}
+            type="password"
             placeholder="password"
             sx={{ marginBottom: 3 }}
             value={password}
