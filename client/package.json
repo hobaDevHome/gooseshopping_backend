@@ -17,6 +17,7 @@
     "@testing-library/user-event": "latest",
     "axios": "latest",
     "firebase": "latest",
+    "formik": "^2.4.5",
     "react": "latest",
     "react-dom": "latest",
     "react-hot-toast": "^2.4.1",
