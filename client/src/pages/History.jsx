@@ -106,11 +106,16 @@ const PurchaseHistory = () => {
                                 padding={1}
                               >
                                 <Grid item xs={2}>
-                                  <img
-                                    src={item.imageSrc[0]}
-                                    alt="cartitem"
-                                    className={classes.itemImage}
-                                  />
+                                  <Link
+                                    to={`/products/${item.id}`}
+                                    style={{ textDecoration: "none" }}
+                                  >
+                                    <img
+                                      src={item.imageSrc[0]}
+                                      alt="cartitem"
+                                      className={classes.itemImage}
+                                    />
+                                  </Link>
                                 </Grid>
                                 <Grid
                                   item

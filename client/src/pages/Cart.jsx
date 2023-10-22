@@ -359,11 +359,13 @@ const CartItemLargeScreens = ({ item }) => {
         </div>
       </Grid>
       <Grid item xs={1.5}>
-        <img
-          src={item.imageSrc[0]}
-          alt="cartitem"
-          className={classes.itemImage}
-        />
+        <Link to={`/products/${item.id}`} style={{ textDecoration: "none" }}>
+          <img
+            src={item.imageSrc[0]}
+            alt="cartitem"
+            className={classes.itemImage}
+          />
+        </Link>
       </Grid>
       <Grid item xs={4} sx={{ textAlign: "left", flexWrap: "wrap" }}>
         {item.title}
@@ -433,11 +435,13 @@ const CartItemMobileScreens = ({ item }) => {
       alignItems={"center"}
     >
       <Grid item xs={3}>
-        <img
-          src={item.imageSrc[0]}
-          alt="cartitem"
-          className={classes.itemImage}
-        />
+        <Link to={`/products/${item.id}`} style={{ textDecoration: "none" }}>
+          <img
+            src={item.imageSrc[0]}
+            alt="cartitem"
+            className={classes.itemImage}
+          />
+        </Link>
       </Grid>
       <Grid item container xs={9} paddingLeft={1}>
         <Grid item container xs={12} justifyContent="space-between">
