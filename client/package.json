@@ -18,7 +18,7 @@
     "axios": "latest",
     "firebase": "latest",
     "formik": "^2.4.5",
-    "react": "latest",
+    "react": "17.0.0",
     "react-dom": "latest",
     "react-hot-toast": "^2.4.1",
     "react-image-gallery": "latest",
