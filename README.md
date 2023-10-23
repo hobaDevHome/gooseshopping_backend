@@ -1,4 +1,4 @@
-# Goose Shopping : E-commerce App
+## Goose Shopping: E-commerce App
 
 Goose Shopping App is an E-commerce React application designed to list procutcs and the details of each procuct with more features.
 
