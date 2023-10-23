@@ -12,6 +12,7 @@ You can check out the live demo of the project [here](https://goose-shopping.net
 - Products Page: Display a list of products with images, names, prices, and descriptions.
 - Product Details Page: Allow users to view detailed information about a selected product.
 - Product Filtering: Implement filters to let users narrow down products by category or color.
+- Cart: where you can add products to cart, and able to increase and decrease item amounts.
 - Payment Feature: Enable users to make purchases using Stripe for secure payments.
 - Purchase History: Keep track of users' previous purchase history.
 - State Management: Use Redux Toolkit to manage the application's state efficiently.
