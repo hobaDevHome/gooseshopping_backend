@@ -1,6 +1,6 @@
 ## Goose Shopping: E-commerce App
 
-Goose Shopping App is an E-commerce React application designed to list procutcs and the details of each procuct with more features.
+Goose Shopping App is a full stack E-commerce React application designed to list products and the details of each product, add to cart, do payments, and more features.
 
 
 ## Demo
@@ -9,6 +9,7 @@ You can check out the live demo of the project [here](https://goose-shopping.net
 
 ## Features
 
+- Sign-in page for current users and Sign-Up page for newcomers.
 - Products Page: Display a list of products with images, names, prices, and descriptions.
 - Product Details Page: Allow users to view detailed information about a selected product.
 - Product Filtering: Implement filters to let users narrow down products by category or color.
@@ -20,7 +21,7 @@ You can check out the live demo of the project [here](https://goose-shopping.net
 
 ## Technologies Used
 
-- React - Material-UI - Firebase firestore and storage - Redux Toolkit - Redux Thunk - LocaleStorage - Stripe Payment.
+- React - Material-UI - Firebase Firestore, storage and authentication - Redux Toolkit - Redux Thunk - LocaleStorage - Stripe Payment.
 
 ## Installation
   1. Clone the repository
@@ -35,6 +36,7 @@ npm install
 npm start
 
 
+#
 
 ![alt text](https://github.com/hobaDevHome/gooseshopping_backend/blob/master/client/public/images/sc-0.jpg)
 
