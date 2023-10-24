@@ -27,15 +27,14 @@ You can check out the live demo of the project [here](https://goose-shopping.net
   1. Clone the repository
 git clone [https://github.com/yourusername/your-repo.git](https://github.com/hobaDevHome/gooseshopping_backend)
 
-2. cd to the project folder and then to server folder
+2. cd to the project folder and then to the server folder
 npm install
-3. cd to clinet folder
+3. cd to client folder
 npm install
 
-## Start the development server, from clint folder
-npm start
-
-
+## Start the development server, from the client folder
+npm start       
+#
 #
 
 ![alt text](https://github.com/hobaDevHome/gooseshopping_backend/blob/master/client/public/images/sc-0.jpg)
