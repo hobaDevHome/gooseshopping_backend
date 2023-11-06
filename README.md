@@ -25,7 +25,7 @@ You can check out the live demo of the project [here](https://goose-shopping.net
 
 ## Installation
   1. Clone the repository
-git clone [https://github.com/yourusername/your-repo.git](https://github.com/hobaDevHome/gooseshopping_backend)
+git clone [https://github.com/hobaDevHome/gooseshopping_backend](https://github.com/hobaDevHome/gooseshopping_backend)
 
 2. cd to the project folder and then to the server folder
 npm install
