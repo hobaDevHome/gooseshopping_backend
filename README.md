@@ -28,12 +28,11 @@ You can check out the live demo of the project [here](https://goose-shopping.net
 git clone [https://github.com/hobaDevHome/gooseshopping_backend](https://github.com/hobaDevHome/gooseshopping_backend)
 
 2. cd to the project folder and then to the server folder
-npm install
-3. cd to client folder
-npm install
-
-## Start the development server, from the client folder
-npm start       
+3. run : npm install
+4. then run the serever :  node indes.js
+5. cd to client folder
+6. run : npm install
+7. then run the app : npm start       
 #
 #
 
