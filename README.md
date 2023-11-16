@@ -29,7 +29,7 @@ git clone [https://github.com/hobaDevHome/gooseshopping_backend](https://github.
 
 2. cd to the project folder and then to the server folder
 3. run : npm install
-4. then run the serever :  node indes.js
+4. then run the serever : npm start
 5. cd to client folder
 6. run : npm install
 7. then run the app : npm start       
