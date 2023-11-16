@@ -32,7 +32,7 @@ git clone [https://github.com/hobaDevHome/gooseshopping_backend](https://github.
 4. then run the serever : npm start
 5. cd to client folder
 6. run : npm install
-7. then run the app : npm start       
+    
 #
 #
 
