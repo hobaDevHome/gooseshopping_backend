@@ -1,4 +1,4 @@
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+// import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -80,8 +80,8 @@ const useStyles = makeStyles({
 export default function PaymentForm() {
   const [isProcessing, setIsProcessing] = useState(false);
   const classes = useStyles();
-  const stripe = useStripe();
-  const elements = useElements();
+  // const stripe = useStripe();
+  // const elements = useElements();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { currentUser } = useAuth();
@@ -106,47 +106,47 @@ export default function PaymentForm() {
     localStorage.setItem("items", "[]");
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
 
-    setIsProcessing(true);
+  //   setIsProcessing(true);
 
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: "card",
-      card: elements.getElement(CardElement),
-    });
+  //   const { error, paymentMethod } = await stripe.createPaymentMethod({
+  //     type: "card",
+  //     card: elements.getElement(CardElement),
+  //   });
 
-    if (!error) {
-      try {
-        const { id } = paymentMethod;
-        const response = await axios.post(
-          "http://gooseshopping-server.vercel.app/payment",
-          {
-            // const response = await axios.post("http://localhost:4000/payment", {
-            amount: 1000,
-            id,
-          }
-        );
+  //   if (!error) {
+  //     try {
+  //       const { id } = paymentMethod;
+  //       const response = await axios.post(
+  //         "http://gooseshopping-server.vercel.app/payment",
+  //         {
+  //           // const response = await axios.post("http://localhost:4000/payment", {
+  //           amount: 1000,
+  //           id,
+  //         }
+  //       );
 
-        if (response.data.success) {
-          console.log("Successful payment");
+  //       if (response.data.success) {
+  //         console.log("Successful payment");
 
-          addPurshaseToFirebase();
-        }
-      } catch (error) {
-        console.log("Error", error);
-        toast.error(error.message);
-      }
-    } else {
-      console.log(error.message);
-      toast.error(error.message);
-    }
-    setIsProcessing(false);
-  };
+  //         addPurshaseToFirebase();
+  //       }
+  //     } catch (error) {
+  //       console.log("Error", error);
+  //       toast.error(error.message);
+  //     }
+  //   } else {
+  //     console.log(error.message);
+  //     toast.error(error.message);
+  //   }
+  //   setIsProcessing(false);
+  // };
 
-  const clearForm = () => {
-    elements.getElement(CardElement).clear();
-  };
+  // const clearForm = () => {
+  //   elements.getElement(CardElement).clear();
+  // };
   const handleSubmit2 = () => {
     addPurshaseToFirebase();
     navigate("/paymentcompleted");
@@ -223,15 +223,12 @@ export default function PaymentForm() {
 
           <Grid item xs={6}>
             <button
-              disabled={isProcessing || !stripe || !elements}
               id="submit"
               className={classes.blueButton}
               style={{ backgroundColor: colors.green }}
               onClick={handleSubmit2}
             >
-              <span id="button-text">
-                {isProcessing ? "Processing ... " : "Pay now"}
-              </span>
+              <span id="button-text">Pay now</span>
             </button>
           </Grid>
         </Grid>
