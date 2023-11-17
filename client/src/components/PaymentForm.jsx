@@ -12,6 +12,7 @@ import { makeStyles } from "@mui/styles";
 import { toast } from "react-toastify";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
+import { Link } from "react-router-dom";
 
 import Paper from "@mui/material/Paper";
 
@@ -146,10 +147,14 @@ export default function PaymentForm() {
   const clearForm = () => {
     elements.getElement(CardElement).clear();
   };
+  const handleSubmit2 = () => {
+    addPurshaseToFirebase();
+    navigate("/paymentcompleted");
+  };
 
   return (
     <Paper elevation={3} padding={0}>
-      <form onSubmit={handleSubmit}>
+      <form>
         <Grid container padding={3} marginTop={3}>
           <Grid item xs={12}>
             <Typography
@@ -184,29 +189,45 @@ export default function PaymentForm() {
             />
           </Grid>
           <Grid item xs={12}>
-            <fieldset className="FormGroup">
-              <div className="FormRow">
-                <CardElement options={CARD_OPTIONS} />
-              </div>
-            </fieldset>
-          </Grid>
-          <Grid item xs={6}>
-            <button
-              type="button"
-              onClick={clearForm}
-              disabled={isProcessing || !stripe || !elements}
-              className={classes.blueButton}
-              style={{ backgroundColor: colors.darkPink }}
+            <Typography
+              variant="caption"
+              display="block"
+              gutterBottom
+              sx={{ textAlign: "left" }}
             >
-              Reset
-            </button>
+              Card Number
+            </Typography>
+            <TextField
+              fullWidth
+              label="Card Number"
+              id="Email"
+              sx={{ marginBottom: 3 }}
+            />
           </Grid>
+          <Grid item xs={12}>
+            <Typography
+              variant="caption"
+              display="block"
+              gutterBottom
+              sx={{ textAlign: "left" }}
+            >
+              Expiray date
+            </Typography>
+            <TextField
+              fullWidth
+              label="Date"
+              id="Email"
+              sx={{ marginBottom: 3 }}
+            />
+          </Grid>
+
           <Grid item xs={6}>
             <button
               disabled={isProcessing || !stripe || !elements}
               id="submit"
               className={classes.blueButton}
               style={{ backgroundColor: colors.green }}
+              onClick={handleSubmit2}
             >
               <span id="button-text">
                 {isProcessing ? "Processing ... " : "Pay now"}
