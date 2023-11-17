@@ -118,10 +118,14 @@ export default function PaymentForm() {
     if (!error) {
       try {
         const { id } = paymentMethod;
-        const response = await axios.post("http://localhost:4000/payment", {
-          amount: 1000,
-          id,
-        });
+        const response = await axios.post(
+          "http://gooseshopping-server.vercel.app/payment",
+          {
+            // const response = await axios.post("http://localhost:4000/payment", {
+            amount: 1000,
+            id,
+          }
+        );
 
         if (response.data.success) {
           console.log("Successful payment");

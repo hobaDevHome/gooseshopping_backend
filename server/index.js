@@ -20,7 +20,8 @@ app.post("/payment", cors(), async (req, res) => {
       payment_method: id,
       confirm: true,
 
-      return_url: "http://localhost:3000/",
+      return_url: "http://gooseshopping-client.vercel.app/",
+      // return_url: "http://localhost:3000/",
     });
 
     res.json({
